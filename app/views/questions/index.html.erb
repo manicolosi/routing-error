@@ -4,6 +4,7 @@
   <% @questions.each do |q| %>
     <li>
       <%= link_to q.title, q %>
+      <%= q.answer_count %>
     </li>
   <% end %>
 </ul>
