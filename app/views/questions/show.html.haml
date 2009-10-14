@@ -1,0 +1,10 @@
+%h2=h @question.title
+
+%p=h @question.body
+
+= @question.answer_count
+
+%ul
+  - @question.answers.each do |a|
+    %li
+      =h a.body

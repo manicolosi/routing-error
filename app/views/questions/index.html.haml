@@ -1,0 +1,7 @@
+%h2 All questions
+
+%ul
+  - @questions.each do |q|
+    %li
+      = link_to q.title, q
+      = q.answer_count
