@@ -1,0 +1,10 @@
+- form_for @question do |f|
+  = f.error_messages
+
+  = f.label :title, "What's your question?"
+  = f.text_field :title
+
+  = f.label :body, "Enter question details:"
+  = f.text_area :body
+
+  = f.submit "Ask your question!"
