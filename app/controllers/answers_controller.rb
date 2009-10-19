@@ -7,10 +7,8 @@ class AnswersController < ApplicationController
       flash[:notice] = 'Successfully posted your answer.'
       redirect_to @question
     else
-      # FIXME: We should redirect to the question and show the form
-      # errors, but the below doesn't work.
-      #redirect_to @question
-      render :xml => @answer.errors, :status => :unprocessable_entity
+      flash[:error] = 'Unable to post your answer'
+      redirect_to @question
     end
   end
 end
