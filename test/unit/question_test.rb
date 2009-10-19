@@ -13,27 +13,4 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal "can't be blank", q.errors[:title]
     assert_equal "can't be blank", q.errors[:body]
   end
-
-  test "answer count with no answers" do
-    q = Question.new
-    assert_equal '0 answers', q.answer_count
-  end
-
-  test "answer count with one answers" do
-    q = Question.new(:title => 'The Title', :body => 'The body')
-    Answer.create(:question => q, :body => 'Test answer #3')
-    q.save!
-
-    #assert_equal '1 answer', q.answer_count
-  end
-
-  test "answer count with some answers" do
-    q = Question.new(:title => 'The Title', :body => 'The body')
-    Answer.create(:question => q, :body => 'Test answer #3')
-    Answer.create(:question => q, :body => 'Test answer #3')
-    Answer.create(:question => q, :body => 'Test answer #3')
-    q.save!
-
-    assert_equal '3 answers', q.answer_count
-  end
 end

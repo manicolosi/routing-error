@@ -3,7 +3,7 @@
 = link_to "Ask a question", new_question_path
 
 %ul
-  - @questions.each do |q|
+  - @questions.each do |question|
     %li
-      = link_to q.title, q
-      = q.answer_count
+      = link_to question.title, question
+      = pluralize(question.answers.count, 'answer')

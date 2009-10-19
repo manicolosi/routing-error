@@ -4,12 +4,11 @@
 
 = link_to "Edit question", edit_question_path
 
-%h3= @question.answer_count
+%h3= pluralize(@question.answers.count, 'answer')
 
 %ul
-  - @question.answers.each do |a|
-    %li
-      =h a.body
+  - @question.answers.each do |answer|
+    %li=h answer.body
 
 %h2 Answer this question
 
