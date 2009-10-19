@@ -10,3 +10,10 @@
   - @question.answers.each do |a|
     %li
       =h a.body
+
+%h2 Answer this question
+
+- form_for [@question, @answer] do |f|
+  = f.error_messages
+  = f.text_area :body, :rows => 5
+  = f.submit "Post answer"
