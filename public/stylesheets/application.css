@@ -1,11 +1,25 @@
 label, input[type="submit"] {
   display: block;
 }
-input[type="text"], input[type="submit"], textarea {
+input, textarea {
   padding: 0.25em;
 }
-input[type="text"], textarea {
+input[type="text"], input[type="password"], textarea {
   margin-bottom: 1em;
-  width: 60%;
+  width: 50%;
   border: 1px solid #999;
+}
+#user_nav {
+  float: right;
+  margin: 0;
+  font-size: 90%;
+  list-style: none;
+}
+#user_nav li {
+  float: left;
+  padding: 0 0.5em;
+  border-left: 1px solid #999;
+}
+#user_nav li.first {
+  border-left: none;
 }
