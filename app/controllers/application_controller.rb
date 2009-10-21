@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def require_user
+    unless logged_in?
+      flash[:notice] = "To view this page you must log in first."
+      redirect_to new_user_session_path
+    end
+  end
+
   def current_user_session
     return @current_user_session if defined? @current_user_session
     @current_user_session = UserSession.find

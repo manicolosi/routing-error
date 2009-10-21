@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :require_user, :except => [ :index, :show ]
+
   def index
     @questions = Question.all
   end
