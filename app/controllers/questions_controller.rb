@@ -16,7 +16,8 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
 
     if @question.save
-      flash[:notice] = 'Successfully asked your question.'
+      flash[:success] = "Your question has been asked. Sit back and" +
+                        "wait for the answers to come in!"
       redirect_to @question
     else
       render :action => 'new'
@@ -31,7 +32,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     if @question.update_attributes(params[:question])
-      flash[:notice] = "Updated question successfully."
+      flash[:success] = "Your question has been updated."
       redirect_to @question
     else
       render :action => 'edit'

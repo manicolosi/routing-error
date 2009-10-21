@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(params[:answer])
 
     if @answer.save
-      flash[:notice] = 'Successfully posted your answer.'
+      flash[:success] = 'Successfully posted your answer.'
       redirect_to @question
     else
       flash[:error] = 'Unable to post your answer'

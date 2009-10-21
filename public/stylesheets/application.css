@@ -9,6 +9,26 @@ input[type="text"], input[type="password"], textarea {
   width: 50%;
   border: 1px solid #999;
 }
+
+.error, .notice, .success {
+  padding: 0.5em;
+}
+.error {
+  border: 2px solid #FBC2C4;
+  color: #8A1F11;
+  background: #FBE3E4;
+}
+.notice {
+  border: 2px solid #FFD324;
+  color: #514721;
+  background: #FFF6BF;
+}
+.success {
+  border: 2px solid #C6D880;
+  color: #264409;
+  background: #E6EFC2;
+}
+
 #user_nav {
   float: right;
   margin: 0;
