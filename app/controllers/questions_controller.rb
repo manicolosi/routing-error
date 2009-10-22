@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:question])
+    @question = current_user.questions.build(params[:question])
 
     if @question.save
       flash[:success] = "Your question has been asked. Sit back and" +
@@ -27,11 +27,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
   end
 
   def update
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
 
     if @question.update_attributes(params[:question])
       flash[:success] = "Your question has been updated."

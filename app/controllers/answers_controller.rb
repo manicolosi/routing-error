@@ -2,15 +2,15 @@ class AnswersController < ApplicationController
   before_filter :require_user
 
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.build(params[:answer])
+    @answer = current_user.answers.build(params[:answer])
+    @answer.question = Question.find(params[:question_id])
 
     if @answer.save
       flash[:success] = 'Successfully posted your answer.'
-      redirect_to @question
     else
       flash[:error] = 'Unable to post your answer'
-      redirect_to @question
     end
+
+    redirect_to @answer.question
   end
 end
