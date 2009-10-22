@@ -1,8 +1,10 @@
+.controls
+  - if current_user == @question.author
+    = link_to "Edit", edit_question_path
 %h2=h @question.title
 
 %p=h @question.body
 
-= link_to "Edit question", edit_question_path
 
 %p
   Asked by
