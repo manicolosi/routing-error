@@ -8,7 +8,7 @@
 
 %p
   Asked by
-  = link_to @question.author.username, @question.author
+  = author_link @question
 
 %h3= pluralize(@question.answers.count, 'answer')
 
@@ -17,7 +17,7 @@
     %li
       =h answer.body
       Answered by
-      = link_to answer.author.username, answer.author
+      = author_link answer
 
 %h2 Answer this question
 

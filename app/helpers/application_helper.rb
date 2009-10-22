@@ -7,4 +7,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def author_link(item)
+    link_to item.author.username, item.author
+  end
 end
