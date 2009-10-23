@@ -1,3 +1,6 @@
+a       { color: #233FBF; text-decoration: none; }
+a:hover { color: #7F95FF; text-decoration: underline; }
+
 label, input[type="submit"] {
   display: block;
 }
@@ -29,21 +32,29 @@ input[type="text"], input[type="password"], textarea {
   background: #E6EFC2;
 }
 
+#header h1 a { color: #111 !important; }
+#header h1 a:hover { color: #333 !important; text-decoration: none; }
+
 .controls {
   float: right;
   padding: 0 0.5em;
   font-size: 90%;
 }
 #user_nav {
-  padding: 0;
+  padding: 0.25em;
   margin: 0;
   list-style: none;
+  background: #ddd;
+  border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
 }
 #user_nav li {
   float: left;
-  padding: 0 0.5em;
-  border-left: 1px solid #999;
+  padding: 0.25em 0.5em;
 }
-#user_nav li.first {
-  border-left: none;
-}
+
+a.chrome, .chrome a             { color: #2276BB !important; }
+a.chrome:hover, .chrome a:hover { color: #0084B4 !important; }
+
+.meta { color: #333; }

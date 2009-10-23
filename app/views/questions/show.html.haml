@@ -6,18 +6,24 @@
 %p=h @question.body
 
 
-%p
+%p.meta
   Asked by
   = author_link @question
+  = time_ago_in_words @question.created_at
+  ago
 
 %h3= pluralize(@question.answers.count, 'answer')
 
 %ul
   - @question.answers.each do |answer|
     %li
-      =h answer.body
-      Answered by
-      = author_link answer
+      %div
+        %p=h answer.body
+        %p.meta
+          Answered by
+          = author_link answer
+          = time_ago_in_words answer.created_at
+          ago
 
 %h2 Answer this question
 
