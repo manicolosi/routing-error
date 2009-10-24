@@ -37,7 +37,6 @@ input[type="text"], input[type="password"], textarea {
 
 .controls {
   float: right;
-  padding: 0 0.5em;
   font-size: 90%;
 }
 #user_nav {
@@ -57,4 +56,24 @@ input[type="text"], input[type="password"], textarea {
 a.chrome, .chrome a             { color: #2276BB !important; }
 a.chrome:hover, .chrome a:hover { color: #0084B4 !important; }
 
-.meta { color: #333; }
+.meta { color: #444; margin-bottom: 0; }
+
+.answers {
+  padding: 0;
+}
+.answer {
+  margin: 1em 0;
+  padding: 0.5em;
+  background: #eee;
+  border: 2px solid #aaa;
+  border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+}
+.answer.accepted {
+  background: #dfd;
+  border: 2px solid #9b9;
+}
+.answer p {
+  margin-top: 0;
+}

@@ -3,4 +3,8 @@ class Answer < ActiveRecord::Base
   belongs_to :question
 
   validates_presence_of :question, :body, :author
+
+  def accepted?
+    question.accepted_answer == self
+  end
 end
