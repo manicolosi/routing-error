@@ -5,6 +5,10 @@ class AnswersController < ApplicationController
     redirect_to Answer.find(params[:id]).question
   end
 
+  def new
+    @answer = Question.find(params[:question_id]).answers.build
+  end
+
   def create
     @answer = current_user.answers.build(params[:answer])
     @answer.question = Question.find(params[:question_id])

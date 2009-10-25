@@ -17,6 +17,8 @@
 
 %h3= pluralize(@question.answers.count, 'answer')
 
+= link_to "Answer this question!", new_question_answer_path(@question)
+
 %ul.answers
   - @question.answers.each do |answer|
     %li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
@@ -44,10 +46,3 @@
         %p.meta
           This answer has been accepted by the question asker
           = "(#{author_link @question})"
-
-%h2 Answer this question
-
-- form_for [@question, @answer] do |f|
-  = f.error_messages
-  = f.text_area :body, :rows => 5
-  = f.submit "Post answer"

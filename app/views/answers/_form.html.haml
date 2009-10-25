@@ -1,0 +1,7 @@
+- form_for [@answer.question, @answer] do |f|
+  = f.error_messages
+
+  = f.label :body, "What's the answer?"
+  = f.text_area :body
+
+  = f.submit "Answer this question!"
