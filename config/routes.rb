@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :users
 
-  map.resources :questions, :has_many => :answers
+  map.resources :questions, :has_many => [ :answers, :votes ]
 
   map.root :questions
 end

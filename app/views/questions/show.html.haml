@@ -3,8 +3,15 @@
     = link_to "Edit", edit_question_path
 %h2=h @question.title
 
+-# Value parameter passed in to avoid it being nil
+- form_for [@question, @question.votes.build(:value => 0)] do |f|
+  = f.submit "Up"
+  = @question.total_votes
+  = f.submit "Down"
+
 %p=h @question.body
 
+.clear
 
 %p.meta
   Asked by

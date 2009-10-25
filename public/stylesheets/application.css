@@ -1,3 +1,11 @@
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+}
+
 a       { color: #233FBF; text-decoration: none; }
 a:hover { color: #7F95FF; text-decoration: underline; }
 
@@ -11,6 +19,33 @@ input[type="text"], input[type="password"], textarea {
   margin-bottom: 1em;
   width: 50%;
   border: 1px solid #999;
+}
+
+.new_vote {
+  float: left;
+  margin-right: 0.5em;
+  text-align: center;
+  font-size: 150%;
+  font-weight: bold;
+  color: #333;
+}
+.new_vote input[type="submit"] {
+  background: none;
+  border: none;
+  width: 48px;
+  height: 48px;
+  text-indent: -999em;
+  cursor: pointer;
+}
+.new_vote input[type="submit"][value="Up"] {
+  background-image: url(/images/vote-up.png);
+}
+.new_vote input[type="submit"][value="Down"] {
+  background-image: url(/images/vote-down.png);
+}
+
+.clear {
+  clear: both;
 }
 
 .error, .notice, .success {
