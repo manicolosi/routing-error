@@ -5,18 +5,4 @@ class Question < ActiveRecord::Base
   has_many :votes, :as => :voteable
 
   validates_presence_of :title, :body, :author
-
-  def vote(voter, value)
-    value = case value
-      when :up: 1
-      when :down: -1
-      else value
-    end
-
-    votes.create(:voter => voter, :value => value)
-  end
-
-  def total_votes
-    votes.map {|vote| vote.value}.reduce(:+) || 0
-  end
 end

@@ -2,5 +2,5 @@
 - form_for [voteable, voteable.votes.build(:value => 0)] do |f|
   %div
     = f.submit "Up", :id => "vote_submit_up"
-    %div= voteable.total_votes
+    %strong= Vote.votes_score_for(voteable)
     = f.submit "Down", :id => "vote_submit_down"

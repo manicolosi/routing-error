@@ -25,12 +25,12 @@ class QuestionTest < ActiveSupport::TestCase
     ted = User.create(:username => 'ted', :email => 'ted@example.com',
       :password => "none", :password_confirmation => "none")
 
-    assert_equal 0, q.total_votes
+    assert_equal 0, Vote.votes_score_for(q)
 
-    q.vote(bill, :up)
-    q.vote(ted, :down)
+    Vote.vote(bill, q, :up)
+    Vote.vote(ted, q, :down)
 
     assert_equal 2, q.votes.count
-    assert_equal 0, q.total_votes
+    assert_equal 0, Vote.votes_score_for(q)
   end
 end

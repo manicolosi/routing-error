@@ -2,14 +2,14 @@ class VotesController < ApplicationController
   before_filter :require_user
 
   def create
-    question = Question.find(params[:question_id])
+    voteable = Question.find(params[:question_id])
     direction = params[:commit].downcase.to_sym
-    vote = question.vote(current_user, direction)
+    vote = Vote.vote(current_user, voteable, direction)
 
     unless vote.valid?
       flash[:error] = "Dude, you've already voted!"
     end
 
-    redirect_to question
+    redirect_to voteable
   end
 end
