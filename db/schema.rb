@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091024214457) do
+ActiveRecord::Schema.define(:version => 20091025002221) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20091024214457) do
     t.integer "value"
     t.integer "voteable_id"
     t.string  "voteable_type"
+    t.integer "voter_id"
   end
 
 end

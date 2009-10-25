@@ -6,14 +6,14 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :title, :body, :author
 
-  def vote(value)
+  def vote(voter, value)
     value = case value
       when :up: 1
       when :down: -1
       else value
     end
 
-    votes.create(:value => value)
+    votes.create(:voter => voter, :value => value)
   end
 
   def total_votes

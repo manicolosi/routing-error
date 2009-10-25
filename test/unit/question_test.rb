@@ -20,16 +20,17 @@ class QuestionTest < ActiveSupport::TestCase
     u = User.new(:username => 'joe', :email => 'joe@example.com')
     q = Question.create(:author => u, :title => 'The Title', :body => 'The body')
 
+    bill = User.create(:username => 'bill', :email => 'bill@example.com',
+      :password => "none", :password_confirmation => "none")
+    ted = User.create(:username => 'ted', :email => 'ted@example.com',
+      :password => "none", :password_confirmation => "none")
+
     assert_equal 0, q.total_votes
 
-    q.vote(:up)
-    q.vote(:up)
-    q.vote(:up)
-    q.vote(1)       # Same as up
-    q.vote(:down)
-    q.vote(-1)      # Same as down
+    q.vote(bill, :up)
+    q.vote(ted, :down)
 
-    assert_equal 6, q.votes.count
-    assert_equal 2, q.total_votes
+    assert_equal 2, q.votes.count
+    assert_equal 0, q.total_votes
   end
 end
