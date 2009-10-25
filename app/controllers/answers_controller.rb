@@ -1,5 +1,9 @@
 class AnswersController < ApplicationController
-  before_filter :require_user
+  before_filter :require_user, :except => [ :index, :show ]
+
+  def show
+    redirect_to Answer.find(params[:id]).question
+  end
 
   def create
     @answer = current_user.answers.build(params[:answer])

@@ -1,5 +1,6 @@
 -# HACK: Value set to 0 otherwise it throws off total_votes
-- form_for [voteable, voteable.votes.build(:value => 0)] do |f|
+-# HACK: Parent is necessary for nested resources (like answers)
+- form_for [parent, voteable, voteable.votes.build(:value => 0)] do |f|
   %div
     = f.submit "Up", :id => "vote_submit_up"
     %strong= Vote.votes_score_for(voteable)
