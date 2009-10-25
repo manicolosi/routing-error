@@ -1,0 +1,6 @@
+-# HACK: Value set to 0 otherwise it throws off total_votes
+- form_for [voteable, voteable.votes.build(:value => 0)] do |f|
+  %div
+    = f.submit "Up", :id => "vote_submit_up"
+    %div= voteable.total_votes
+    = f.submit "Down", :id => "vote_submit_down"
