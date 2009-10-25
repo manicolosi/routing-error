@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091024010451) do
+ActiveRecord::Schema.define(:version => 20091024214457) do
 
   create_table "answers", :force => true do |t|
     t.text     "body"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(:version => 20091024010451) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer "value"
+    t.integer "voteable_id"
+    t.string  "voteable_type"
   end
 
 end
