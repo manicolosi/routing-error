@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resources :questions, :has_many => :answers
+  map.resources :answers
   map.resources :votes
 
   map.root :questions

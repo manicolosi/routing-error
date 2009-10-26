@@ -8,8 +8,4 @@ class Answer < ActiveRecord::Base
   def accepted?
     question.accepted_answer == self
   end
-
-  def parent
-    question
-  end
 end

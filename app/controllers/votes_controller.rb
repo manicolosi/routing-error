@@ -13,6 +13,6 @@ class VotesController < ApplicationController
                       "#{voteable_type.downcase}!"
     end
 
-    redirect_to [voteable.parent, voteable]
+    redirect_to voteable
   end
 end
