@@ -3,7 +3,7 @@
     = link_to "Edit", edit_question_path
 %h2=h @question.title
 
-= render :partial => 'votes/form', :locals => { :voteable => @question, :parent => nil }
+= render :partial => 'votes/form', :locals => { :voteable => @question }
 
 %p=h @question.body
 
@@ -22,7 +22,7 @@
 %ul.answers
   - @question.answers.each do |answer|
     %li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
-      = render :partial => 'votes/form', :locals => { :voteable => answer, :parent => @question }
+      = render :partial => 'votes/form', :locals => { :voteable => answer }
       .controls
         - if current_user == @question.author
           - if !answer.accepted?
