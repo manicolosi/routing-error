@@ -26,7 +26,7 @@ module VotesHelper
   end
 
   def vote_image(dir)
-    image_tag (vote_direction == dir) ? "voted-#{dir}.png" : "vote-#{dir}-disabled.png"
+    image_tag (vote_direction == dir) ? "voted-#{dir}.png" : "vote-#{dir}.png"
   end
 
   def vote_direction

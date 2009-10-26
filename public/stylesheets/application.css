@@ -34,7 +34,7 @@ input[type="text"], input[type="password"], textarea {
   display: block;
   font-size: 250%;
   font-weight: bold;
-  color: #333;
+  color: #444;
 }
 .vote .cancel {
   display: block;
@@ -44,8 +44,8 @@ input[type="text"], input[type="password"], textarea {
   display: inline;
   background: none;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
   text-indent: -999em;
   cursor: pointer;
 }
@@ -53,7 +53,6 @@ input[type="text"], input[type="password"], textarea {
   background-image: url(/images/vote-up.png);
 }
 .vote input[type="submit"][value="Down"] {
-  margin-left: -0.5em;
   background-image: url(/images/vote-down.png);
 }
 
