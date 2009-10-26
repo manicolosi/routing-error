@@ -22,4 +22,4 @@
   = "(#{@user.answers.count})"
 %ul
   - @user.answers.each do |answer|
-    %li= link_to answer.question.title, answer.question
+    %li= link_to answer.question.title, answer
