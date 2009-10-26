@@ -42,7 +42,7 @@ class VoteTest < ActiveSupport::TestCase
     user.votes.create!(:voteable => question, :value => 1)
     vote = user.votes.create(:voteable => question, :value => 1)
 
-    assert_equal "has already been taken", vote.errors[:voter_id]
+    assert_equal "can't vote multiple times", vote.errors[:voter_id]
   end
 
   test "a user can vote on an answer to their question" do
@@ -72,6 +72,6 @@ class VoteTest < ActiveSupport::TestCase
     vote = asker.votes.build(:voteable => question, :value => 1)
 
     assert vote.invalid?
-    assert_equal "can't vote for its own item", vote.errors[:voter]
+    assert_equal "voter can't be the author", vote.errors[:voter]
   end
 end

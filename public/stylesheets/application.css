@@ -50,6 +50,7 @@ input[type="text"], input[type="password"], textarea {
 
 .error, .notice, .success {
   padding: 0.5em;
+  margin: 0.25em 0;
 }
 .error {
   border: 2px solid #FBC2C4;

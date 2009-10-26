@@ -1,14 +1,24 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def author_link(item)
+    link_to item.author.username, item.author
+  end
+
   def flash_messages
     content_tag(:div, :id => 'flash_messages') do
-      flash.collect do |key,msg|
-        content_tag(:div, msg, :class => key)
+      flash.collect do |key,mesg|
+        if flash[key].respond_to? :each
+          flash[key].collect { |mesg| flash_div(key, mesg) }
+        else
+          flash_div(key, mesg)
+        end
       end
     end
   end
 
-  def author_link(item)
-    link_to item.author.username, item.author
+  private
+
+  def flash_div(key, mesg)
+    content_tag(:div, mesg, :class => key)
   end
 end
