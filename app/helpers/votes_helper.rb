@@ -1,7 +1,7 @@
 module VotesHelper
   def render_votes_for(voteable)
     @voteable = voteable
-    @vote = current_user.vote_for(voteable)
+    @vote = current_user && current_user.vote_for(voteable)
 
     content_tag(:div, :class => 'vote') do
       inner_html = ""
