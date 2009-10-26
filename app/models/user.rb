@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
   def vote_downs
     votes.all(:conditions => "value = '-1'").count
   end
+
+  def recent_activity(limit = 10)
+    options = { :order => 'created_at DESC', :limit => 10 }
+    recent = [ :questions, :answers ].map { |stream| send stream }
+    recent = recent.flatten
+    recent = recent.sort { |a, b| b.created_at <=> a.created_at }
+    recent.take(options[:limit])
+  end
 end
