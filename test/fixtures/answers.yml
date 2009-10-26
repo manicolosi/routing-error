@@ -1,7 +1,2 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  body: MyText
-
-two:
-  body: MyText
+example:
+  body: This is the body of the answer.

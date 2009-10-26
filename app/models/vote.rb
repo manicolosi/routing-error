@@ -5,6 +5,7 @@ class Vote < ActiveRecord::Base
   validates_inclusion_of :value, :in => [-1, 1]
   validates_presence_of :voteable, :voter
   validates_uniqueness_of :voter_id, :scope => [ :voteable_id, :voteable_type ]
+  validate :voter_is_not_voteable_author
 
   def self.vote(voter, voteable, value)
     value = case value
@@ -18,5 +19,13 @@ class Vote < ActiveRecord::Base
 
   def self.votes_score_for(voteable)
     voteable.votes.map { |vote| vote.value }.reduce(:+) || 0
+  end
+
+  protected
+
+  def voter_is_not_voteable_author
+    if voteable && voter_id == voteable.author_id
+      errors.add(:voter, "can't vote for its own item")
+    end
   end
 end

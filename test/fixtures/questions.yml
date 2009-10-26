@@ -1,9 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  title: MyString
-  body: MyText
-
-two:
-  title: MyString
-  body: MyText
+example:
+  title: What makes a good example question?
+  body: This is the body of the question.

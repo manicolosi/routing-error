@@ -1,7 +1,11 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+example:
+  username: example_user
+  email: example_user@example.com
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+question_author:
+  username: joe_blow
+  email: joe_blow@example.com
+
+answer_author:
+  username: tom_blow
+  email: tom_blow@example.com

@@ -2,52 +2,76 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
   test "can only vote +1 or -1" do
-    u = User.new(:username => 'joe', :email => 'joe@example.com')
-    q = Question.new(:author => u, :title => 'The Title', :body => 'The body')
-
-    bill = User.new(:username => 'bill', :email => 'bill@example.com')
-
     [ -2, 0, 2 ].each do |n|
-      v = Vote.new(:voteable => q, :voter => bill, :value => n)
-      assert v.invalid?
+      vote = Vote.create(:value => n)
+      assert_equal "is not included in the list", vote.errors[:value]
     end
 
     [ -1, 1 ].each do |n|
-      v = Vote.new(:voteable => q, :voter => bill, :value => n)
-      assert v.valid?
+      vote = Vote.create(:value => n)
+      assert_equal nil, vote.errors[:value]
     end
   end
 
-  test "not valid without an associated voteable" do
+  test "voting requres a voteable" do
     v = Vote.new(:value => 1)
     assert v.invalid?
     assert_equal "can't be blank", v.errors[:voteable]
   end
 
-  test "creating a vote requires a voter" do
-    a = User.new(:username => 'joe', :email => 'joe@example.com')
-    q = Question.new(:author => a, :title => 'The Title', :body => 'The body')
-    v = Vote.new(:voteable => q, :value => 1)
+  test "voting requires a voter" do
+    vote = Vote.create
 
-    assert v.invalid?
-    assert "can't be blank", v.errors[:voter]
+    assert_equal "can't be blank", vote.errors[:voter]
 
-    v.voter = User.new(:username => 'bill', :email => 'bill@example.com')
+    vote.voter = users(:example)
+    vote.save
 
-    assert v.valid?
+    assert_equal nil, vote.errors[:voter]
   end
 
-  test "a user cannot vote multiple times" do
-    a = User.new(:username => 'joe', :email => 'joe@example.com')
-    q = Question.new(:author => a, :title => 'The Title', :body => 'The body')
+  test "a user cannot vote multiple times for the same voteable" do
+    asker = users(:question_author)
+    user = users(:example)
 
-    bill = User.new(:username => 'bill', :email => 'bill@example.com')
+    # Asker asks a question
+    question = questions(:example)
+    question.author = asker
 
-    v = Vote.new(:voter => bill, :voteable => q, :value => 1)
-    assert v.valid?
-    v.save
+    # Another user tries to up-vote it twice
+    user.votes.create!(:voteable => question, :value => 1)
+    vote = user.votes.create(:voteable => question, :value => 1)
 
-    v = Vote.new(:voter => bill, :voteable => q, :value => 1)
-    assert v.invalid?
+    assert_equal "has already been taken", vote.errors[:voter_id]
+  end
+
+  test "a user can vote on an answer to their question" do
+    asker = users(:question_author)
+    answerer = users(:answer_author)
+
+    # Asker asks a question
+    question = questions(:example)
+    question.author = asker
+
+    # Answerer answers asker's question
+    answer = answers(:example)
+    answer.question = question
+    answer.author = answerer
+
+    # Asker up-votes answerer's answer
+    vote = asker.votes.build(:voteable => answer, :value => 1)
+
+    assert vote.valid?
+  end
+
+  test "a user cannot vote on their own voteable" do
+    asker = users(:question_author)
+    question = questions(:example)
+    question.author = asker
+
+    vote = asker.votes.build(:voteable => question, :value => 1)
+
+    assert vote.invalid?
+    assert_equal "can't vote for its own item", vote.errors[:voter]
   end
 end

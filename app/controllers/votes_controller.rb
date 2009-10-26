@@ -9,8 +9,8 @@ class VotesController < ApplicationController
     vote = Vote.vote(current_user, voteable, direction)
 
     unless vote.valid?
-      flash[:error] = "Hey, you've already voted on this " +
-                      "#{voteable_type.downcase}!"
+      flash[:error] = vote.errors.on(:voter) ||
+      vote.errors.on(:voter_id)
     end
 
     redirect_to voteable
