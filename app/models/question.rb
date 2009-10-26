@@ -5,4 +5,8 @@ class Question < ActiveRecord::Base
   has_many :votes, :as => :voteable
 
   validates_presence_of :title, :body, :author
+
+  def parent
+    nil
+  end
 end

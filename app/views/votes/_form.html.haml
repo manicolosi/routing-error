@@ -1,7 +1,8 @@
 -# HACK: Value set to 0 otherwise it throws off total_votes
--# HACK: Parent is necessary for nested resources (like answers)
-- form_for [parent, voteable, voteable.votes.build(:value => 0)] do |f|
+- form_for voteable.votes.build(:value => 0) do |f|
   %div
+    = hidden_field_tag 'voteable_id', voteable.id
+    = hidden_field_tag 'voteable_type', voteable.class
     = f.submit "Up", :id => "vote_submit_up"
     %strong= Vote.votes_score_for(voteable)
     = f.submit "Down", :id => "vote_submit_down"
