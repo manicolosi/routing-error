@@ -9,6 +9,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 a       { color: #233FBF; text-decoration: none; }
 a:hover { color: #7F95FF; text-decoration: underline; }
 
+a img {
+  border: none;
+}
+
 label, input[type="submit"] {
   display: block;
 }
@@ -21,26 +25,35 @@ input[type="text"], input[type="password"], textarea {
   border: 1px solid #999;
 }
 
-.new_vote {
+.vote {
   float: left;
-  margin-right: 0.5em;
+  margin: 0 0.5em 0.5em 0;
   text-align: center;
-  font-size: 150%;
+}
+.vote .score {
+  display: block;
+  font-size: 250%;
   font-weight: bold;
   color: #333;
 }
-.new_vote input[type="submit"] {
+.vote .cancel {
+  display: block;
+  font-size: 75%;
+}
+.vote input[type="submit"] {
+  display: inline;
   background: none;
   border: none;
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   text-indent: -999em;
   cursor: pointer;
 }
-.new_vote input[type="submit"][value="Up"] {
+.vote input[type="submit"][value="Up"] {
   background-image: url(/images/vote-up.png);
 }
-.new_vote input[type="submit"][value="Down"] {
+.vote input[type="submit"][value="Down"] {
+  margin-left: -0.5em;
   background-image: url(/images/vote-down.png);
 }
 

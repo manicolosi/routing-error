@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
     username
   end
 
+  def vote_for(voteable)
+    conditions = "voteable_id = '#{voteable.id}' AND " +
+                 "voteable_type = '#{voteable.class}'"
+    votes.first(:conditions => conditions)
+  end
+
   def vote_ups
     votes.all(:conditions => "value = '1'").count
   end

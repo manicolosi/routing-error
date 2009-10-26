@@ -18,4 +18,13 @@ class VotesController < ApplicationController
 
     redirect_to voteable
   end
+
+  def destroy
+    vote = current_user.votes.find(params[:id])
+    voteable = vote.voteable
+
+    vote.destroy
+
+    redirect_to voteable
+  end
 end
