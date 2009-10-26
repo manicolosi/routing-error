@@ -1,6 +1,7 @@
 %h2= @user.username
 
 %p= "Member for #{time_ago_in_words(@user.created_at)}"
+%p= "Casted #{@user.vote_ups} up votes and #{@user.vote_downs} down votes"
 
 %h3
   Questions asked
