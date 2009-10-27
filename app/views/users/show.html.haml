@@ -4,21 +4,17 @@
 %p= "Casted #{@user.vote_ups} up votes and #{@user.vote_downs} down votes"
 
 %h3 Recent activity
-%ul
-  - @recent.each do |activity|
-    %li
-      = render_activity_for activity
-      %span.meta= "#{time_ago_in_words(activity.created_at)} ago"
+= render_recent_activities(@user)
 
 %h3
-  Questions asked
+  All questions asked
   = "(#{@user.questions.count})"
 %ul
   - @user.questions.each do |question|
     %li= link_to question.title, question
 
 %h3
-  Questions answered
+  All questions answered
   = "(#{@user.answers.count})"
 %ul
   - @user.answers.each do |answer|

@@ -1,0 +1,6 @@
+%ul
+  - recent_activity.each do |activity|
+    %li
+      - link_to activity do
+        = activity_title(activity)
+        %span= activity_time(activity)
