@@ -4,9 +4,7 @@ module VotesHelper
     @vote = current_user && current_user.vote_for(voteable)
 
     content_tag(:div, :class => 'vote') do
-      inner_html = ""
-      inner_html << vote_score
-      inner_html << (@vote ?  render_vote_cancel : render_vote_form)
+      vote_buttons + vote_score
     end
   end
 
@@ -16,20 +14,21 @@ module VotesHelper
 
   private
 
-  def render_vote_form
-    render :partial => 'votes/form', :locals => { :voteable => @voteable }
-  end
-
-  def render_vote_cancel
-    link_to(vote_image(:up) + vote_image(:down), @vote,
-      :method => :delete, :title => "Cancel #{vote_direction} vote")
+  def vote_buttons
+    content_tag(:div, :class => 'vote-buttons') do
+      [:up, :down].collect do |dir|
+        image_tag(vote_image(dir), :class => "vote-button vote-#{dir}")
+      end
+    end.to_s
   end
 
   def vote_image(dir)
-    image_tag (vote_direction == dir) ? "voted-#{dir}.png" : "vote-#{dir}.png"
+    vote_direction == dir ? "voted-#{dir}.png" : "vote-#{dir}.png"
   end
 
   def vote_direction
+    return nil if @vote.nil?
+
     case @vote.value
       when 1: :up
       when -1: :down

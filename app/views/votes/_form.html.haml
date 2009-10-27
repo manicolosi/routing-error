@@ -1,7 +1,0 @@
--# HACK: Value set to 0 otherwise it throws off total_votes
-- form_for voteable.votes.build(:value => 0) do |f|
-  %div
-    = hidden_field_tag 'voteable_id', voteable.id
-    = hidden_field_tag 'voteable_type', voteable.class
-    = f.submit "Up", :id => "vote_submit_up"
-    = f.submit "Down", :id => "vote_submit_down"
