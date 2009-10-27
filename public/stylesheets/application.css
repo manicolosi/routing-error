@@ -44,6 +44,7 @@ input[type="text"], input[type="password"], textarea {
 .vote .vote-buttons .vote-button {
   display: block;
   margin: 0.15em;
+  cursor: pointer;
 }
 
 .clear {

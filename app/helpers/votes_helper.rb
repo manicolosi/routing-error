@@ -17,9 +17,24 @@ module VotesHelper
   def vote_buttons
     content_tag(:div, :class => 'vote-buttons') do
       [:up, :down].collect do |dir|
-        image_tag(vote_image(dir), :class => "vote-button vote-#{dir}")
+        image_tag(vote_image(dir), :class => vote_classes(dir),
+          :title => vote_title(dir))
       end
     end.to_s
+  end
+
+  def vote_classes(dir)
+    classes = ["vote-button vote-#{dir}"]
+    classes << "voted" if vote_direction == dir
+    classes.join(" ")
+  end
+
+  def vote_title(dir)
+    if vote_direction == dir
+      "Cancel this #{dir} vote"
+    else
+      "Vote this #{dir}"
+    end
   end
 
   def vote_image(dir)

@@ -4,6 +4,8 @@
     %meta{'http-equiv' => 'Content-Type', :content => %'text/html;charset=utf-8'}/
     %title Routing Error
     = stylesheet_link_tag "application"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"
+    = yield :head
   %body
     #header
       %ul#user_nav.controls.chrome

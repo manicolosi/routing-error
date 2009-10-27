@@ -1,3 +1,6 @@
+- content_for(:head) do
+  = javascript_include_tag "vote.js"
+
 .controls
   - if current_user == @question.author
     = link_to "Edit", edit_question_path
