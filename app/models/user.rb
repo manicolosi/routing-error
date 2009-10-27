@@ -5,10 +5,6 @@ class User < ActiveRecord::Base
 
   acts_as_authentic
 
-  def to_param
-    username
-  end
-
   def vote_for(voteable)
     conditions = "voteable_id = '#{voteable.id}' AND " +
                  "voteable_type = '#{voteable.class}'"
