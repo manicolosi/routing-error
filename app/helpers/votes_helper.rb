@@ -3,7 +3,7 @@ module VotesHelper
     @voteable = voteable
     @vote = current_user && current_user.vote_for(voteable)
 
-    content_tag(:div, :class => 'vote') do
+    content_tag(:div, :id => "vote-#{voteable.id}", :class => "vote") do
       vote_buttons + vote_score
     end
   end

@@ -4,8 +4,8 @@ class VotesController < ApplicationController
   def create
     voteable_id   = params[:voteable_id]
     voteable_type = params[:voteable_type]
-    voteable = voteable_type.constantize.find(voteable_id)
-    direction = params[:commit].downcase.to_sym
+    voteable = voteable_type.classify.constantize.find(voteable_id)
+    direction = params[:direction].to_sym
     vote = Vote.vote(current_user, voteable, direction)
     @vote = vote
 
