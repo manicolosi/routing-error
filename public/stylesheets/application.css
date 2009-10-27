@@ -27,21 +27,20 @@ input[type="text"], input[type="password"], textarea {
 
 .vote {
   float: left;
-  margin: 0 0.5em 0.5em 0;
-  text-align: center;
+  margin: 0 1em 0 0;
+  width: 4em;
+}
+.vote .new_vote {
+  float: left;
 }
 .vote .score {
-  display: block;
-  font-size: 250%;
+  font-size: 200%;
   font-weight: bold;
   color: #444;
-}
-.vote .cancel {
-  display: block;
-  font-size: 75%;
+  line-height: 1.25em;
 }
 .vote input[type="submit"] {
-  display: inline;
+  margin: 0.15em 0.5em 0.15em 0;
   background: none;
   border: none;
   width: 16px;
@@ -52,8 +51,18 @@ input[type="text"], input[type="password"], textarea {
 .vote input[type="submit"][value="Up"] {
   background-image: url(/images/vote-up.png);
 }
+.vote input[type="submit"][value="Up"]:hover {
+  background-image: url(/images/voted-up.png);
+}
 .vote input[type="submit"][value="Down"] {
   background-image: url(/images/vote-down.png);
+}
+.vote input[type="submit"][value="Down"]:hover {
+  background-image: url(/images/voted-down.png);
+}
+
+li.answer {
+  list-style: none;
 }
 
 .clear {

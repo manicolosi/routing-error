@@ -5,8 +5,8 @@ module VotesHelper
 
     content_tag(:div, :class => 'vote') do
       inner_html = ""
-      inner_html << vote_score
       inner_html << (@vote ?  render_vote_cancel : render_vote_form)
+      inner_html << vote_score
     end
   end
 
