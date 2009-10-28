@@ -25,7 +25,7 @@ input[type="text"], input[type="password"], textarea {
   border: 1px solid #999;
 }
 
-.vote {
+.controls {
   float: left;
   margin: 0 1em 0 0;
   width: 4em;
@@ -39,7 +39,7 @@ input[type="text"], input[type="password"], textarea {
 .vote .vote_form {
   float: left;
 }
-.vote input[type="submit"] {
+.controls input[type="submit"] {
   margin: 0.15em 0.5em 0.15em 0;
   background: none;
   border: none;
@@ -48,26 +48,34 @@ input[type="text"], input[type="password"], textarea {
   text-indent: -999em;
   cursor: pointer;
 }
-.vote input[type="submit"][disabled]:hover {
+.controls input[type="submit"][disabled]:hover {
   cursor: auto;
 }
-.vote input[type="submit"][value="Up"],
-.vote input[type="submit"][value="Up"][disabled]:hover,
-.vote input[type="submit"][value="Up"].voted:hover {
+.controls input[type="submit"][value="Up"],
+.controls input[type="submit"][value="Up"][disabled]:hover,
+.controls input[type="submit"][value="Up"].voted:hover {
   background-image: url(/images/vote-up.png);
 }
-.vote input[type="submit"][value="Down"],
-.vote input[type="submit"][value="Down"][disabled]:hover,
-.vote input[type="submit"][value="Down"].voted:hover {
+.controls input[type="submit"][value="Down"],
+.controls input[type="submit"][value="Down"][disabled]:hover,
+.controls input[type="submit"][value="Down"].voted:hover {
   background-image: url(/images/vote-down.png);
 }
-.vote input[type="submit"][value="Up"].voted,
-.vote input[type="submit"][value="Up"]:hover {
+.controls input[type="submit"][value="Up"].voted,
+.controls input[type="submit"][value="Up"]:hover {
   background-image: url(/images/voted-up.png);
 }
-.vote input[type="submit"][value="Down"].voted,
-.vote input[type="submit"][value="Down"]:hover {
+.controls input[type="submit"][value="Down"].voted,
+.controls input[type="submit"][value="Down"]:hover {
   background-image: url(/images/voted-down.png);
+}
+.controls input[type="submit"][value="Accept"],
+.controls input[type="submit"][value="Unaccept"]:hover {
+  background-image: url(/images/accept.png);
+}
+.controls input[type="submit"][value="Unaccept"],
+.controls input[type="submit"][value="Accept"]:hover {
+  background-image: url(/images/accept-hover.png);
 }
 
 li.answer {
@@ -101,11 +109,9 @@ li.answer {
 #header h1 a { color: #111 !important; }
 #header h1 a:hover { color: #333 !important; text-decoration: none; }
 
-.controls {
+#user_nav {
   float: right;
   font-size: 90%;
-}
-#user_nav {
   padding: 0.25em;
   margin: 0;
   list-style: none;

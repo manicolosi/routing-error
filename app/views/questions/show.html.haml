@@ -1,9 +1,9 @@
-.controls
-  - if current_user == @question.author
-    = link_to "Edit", edit_question_path
 %h2=h @question.title
 
-= render_votes_for(@question)
+.controls
+  = render_votes_for(@question)
+  - if current_user == @question.author
+    = link_to "Edit", edit_question_path
 
 %p=h @question.body
 

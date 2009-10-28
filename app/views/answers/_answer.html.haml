@@ -1,6 +1,6 @@
 %li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
-  = render_votes_for(answer)
   .controls
+    = render_votes_for(answer)
     - if current_user == @question.author
       - if !answer.accepted?
         - form_for @question do |f|
