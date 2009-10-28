@@ -20,28 +20,4 @@
 = link_to "Answer this question!", new_question_answer_path(@question)
 
 %ul.answers
-  - @question.answers.each do |answer|
-    %li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
-      = render_votes_for(answer)
-      .controls
-        - if current_user == @question.author
-          - if !answer.accepted?
-            - form_for @question do |f|
-              = hidden_field_tag 'question[accepted_answer_id]', answer.id
-              = f.submit "Accept"
-          - elsif answer.accepted?
-            - form_for @question do |f|
-              = hidden_field_tag 'question[accepted_answer_id]', nil
-              = f.submit "Unaccept"
-      .body
-        %p=h answer.body
-
-      %p.meta
-        Answered by
-        = author_link answer
-        = time_ago_in_words answer.created_at
-        ago
-      -if answer.accepted?
-        %p.meta
-          This answer has been accepted by the question asker
-          = "(#{author_link @question})"
+  = render :partial => '/answers/answer', :collection => @question.answers
