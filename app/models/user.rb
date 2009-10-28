@@ -26,4 +26,11 @@ class User < ActiveRecord::Base
     recent = recent.sort { |a, b| b.created_at <=> a.created_at }
     recent.take(options[:limit])
   end
+
+  def reputation
+    votes_for = Vote.all.select { |vote| vote.voteable.author == self }
+    votes_for.inject(0) do |acc, vote|
+      acc += (vote.value == 1 ? 10 : -2)
+    end
+  end
 end
