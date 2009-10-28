@@ -15,10 +15,6 @@ module VotesHelper
     html.join("\n")
   end
 
-  def vote_score
-    Vote.votes_score_for(@voteable)
-  end
-
   def current_user_vote
     current_user && current_user.vote_for(@voteable)
   end

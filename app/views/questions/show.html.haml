@@ -3,7 +3,7 @@
 .controls
   = render :partial => 'votes/form', :locals => { :voteable => @question }
   - if current_user == @question.author
-    = link_to "Edit", edit_question_path, :class => "button edit"
+    = button_to "Edit", edit_question_path, :method => :get
 
 %p=h @question.body
 

@@ -28,35 +28,47 @@ input[type="text"], input[type="password"], textarea {
 .controls {
   float: left;
   margin: 0 1em 0 0;
-  width: 4em;
+  width: 6em;
 }
-.vote strong {
+.controls input[type="submit"] {
+  display: block;
+  margin: 0.15em 0.5em 0.15em 0;
+  padding: 0;
+  background: none;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  text-indent: 1.5em;
+  text-align: left;
+  width: 100%;
+  height: 20px;
+  color: #12569B
+}
+.controls input[type="submit"]:hover {
+  color: #2276BB
+}
+.controls .vote_form div {
+  float: left;
+}
+.controls strong {
   font-size: 200%;
   font-weight: bold;
   color: #444;
   line-height: 1.25em;
 }
-.vote .vote_form {
-  float: left;
-}
-.controls input[type="submit"], .controls .button {
-  display: block;
-  margin: 0.15em 0.5em 0.15em 0;
-  background: none;
-  border: none;
+.controls input[type="submit"][value="Up"],
+.controls input[type="submit"][value="Down"] {
   width: 16px;
   height: 16px;
-  text-indent: -999em;
-  cursor: pointer;
-}
-.controls .button.edit {
-  background-image: url(/images/edit.png);
-}
-.controls .button.edit:hover {
-  background-image: url(/images/edit-hover.png);
 }
 .controls input[type="submit"][disabled]:hover {
   cursor: auto;
+}
+.controls input[type="submit"][value="Edit"] {
+  background-image: url(/images/edit.png);
+}
+.controls input[type="submit"][value="Edit"]:hover {
+  background-image: url(/images/edit-hover.png);
 }
 .controls input[type="submit"][value="Up"],
 .controls input[type="submit"][value="Up"][disabled]:hover,
