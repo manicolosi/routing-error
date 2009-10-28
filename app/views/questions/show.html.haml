@@ -1,7 +1,7 @@
 %h2=h @question.title
 
 .controls
-  = render_votes_for(@question)
+  = render :partial => 'votes/form', :locals => { :voteable => @question }
   - if current_user == @question.author
     = link_to "Edit", edit_question_path, :class => "button edit"
 

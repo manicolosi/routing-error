@@ -1,7 +1,9 @@
 module VotesHelper
-  def render_votes_for(voteable)
+  # HACK: The rest of these methods depend on this method being called
+  # first.
+  def vote_form_url(voteable)
     @voteable = voteable
-    render :partial => 'votes/form', :locals => { :voteable => voteable }
+    current_user_voted? ? "/votes/#{current_user_vote.id}" : "/votes"
   end
 
   def vote_fields
@@ -23,10 +25,6 @@ module VotesHelper
 
   def current_user_voted?
     current_user_vote != nil
-  end
-
-  def vote_form_url
-    current_user_voted? ? "/votes/#{current_user_vote.id}" : "/votes"
   end
 
   def vote_form_method

@@ -1,5 +1,5 @@
 .vote
-  - form_tag vote_form_url, :method => vote_form_method, :class => 'vote_form' do
+  - form_tag vote_form_url(voteable), :method => vote_form_method, :class => 'vote_form' do
     %div
       = vote_fields
   %strong= vote_score

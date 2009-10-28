@@ -1,13 +1,12 @@
 %li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
   .controls
-    = render_votes_for(answer)
+    = render :partial => 'votes/form', :locals => { :voteable => answer }
     - if current_user == @question.author
-      - if !answer.accepted?
-        - form_for @question do |f|
+      - form_for @question do |f|
+        - if !answer.accepted?
           = hidden_field_tag 'question[accepted_answer_id]', answer.id
           = f.submit "Accept"
-      - elsif answer.accepted?
-        - form_for @question do |f|
+        - elsif answer.accepted?
           = hidden_field_tag 'question[accepted_answer_id]', nil
           = f.submit "Unaccept"
   .body
