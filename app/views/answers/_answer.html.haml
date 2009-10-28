@@ -2,6 +2,8 @@
   .controls
     = render :partial => 'votes/form', :locals => { :voteable => answer }
     = render :partial => 'questions/answer_accept', :locals => { :answer => answer }
+    - if current_user == answer.author
+      = link_to "Edit", edit_answer_path(answer), :class => "button edit"
   .body
     %p=h answer.body
 

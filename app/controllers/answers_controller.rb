@@ -21,4 +21,19 @@ class AnswersController < ApplicationController
 
     redirect_to @answer.question
   end
+
+  def edit
+    @answer = current_user.answers.find(params[:id])
+  end
+
+  def update
+    @answer = current_user.answers.find(params[:id])
+
+    if @answer.update_attributes(params[:answer])
+      flash[:success] = "Your answer has been updated."
+      redirect_to @answer
+    else
+      render :action => 'edit'
+    end
+  end
 end

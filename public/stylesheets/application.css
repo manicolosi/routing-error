@@ -85,10 +85,6 @@ input[type="text"], input[type="password"], textarea {
   background-image: url(/images/accept-hover.png);
 }
 
-li.answer {
-  list-style: none;
-}
-
 .clear {
   clear: both;
 }
@@ -141,6 +137,8 @@ a.chrome:hover, .chrome a:hover { color: #0084B4 !important; }
   padding: 0;
 }
 .answer {
+  list-style: none;
+  overflow: hidden;
   margin: 1em 0;
   padding: 0.5em;
   background: #eee;
