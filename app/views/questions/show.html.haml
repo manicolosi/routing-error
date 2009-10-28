@@ -3,7 +3,7 @@
 .controls
   = render_votes_for(@question)
   - if current_user == @question.author
-    = link_to "Edit", edit_question_path
+    = link_to "Edit", edit_question_path, :class => "button edit"
 
 %p=h @question.body
 
