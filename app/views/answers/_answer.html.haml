@@ -1,4 +1,4 @@
-%li.answer{:class => answer.accepted? ? "accepted" : "not_accepted"}
+%li.answer{:id => "answer-#{answer.id}", :class => answer.accepted? ? "accepted" : "not_accepted"}
   .controls
     = render :partial => 'votes/form', :locals => { :voteable => answer }
     = render :partial => 'questions/answer_accept', :locals => { :answer => answer }

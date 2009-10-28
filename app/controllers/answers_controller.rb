@@ -2,7 +2,9 @@ class AnswersController < ApplicationController
   before_filter :require_user, :except => [ :index, :show ]
 
   def show
-    redirect_to Answer.find(params[:id]).question
+    answer = Answer.find(params[:id])
+    path = question_path answer.question, :anchor => "answer-#{answer.id}"
+    redirect_to path
   end
 
   def new
@@ -19,7 +21,7 @@ class AnswersController < ApplicationController
       flash[:error] = 'Unable to post your answer'
     end
 
-    redirect_to @answer.question
+    redirect_to @answer
   end
 
   def edit
