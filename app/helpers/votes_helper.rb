@@ -1,39 +1,55 @@
 module VotesHelper
   def render_votes_for(voteable)
     @voteable = voteable
-    @vote = current_user && current_user.vote_for(voteable)
+    render :partial => 'votes/form', :locals => { :voteable => voteable }
+  end
 
-    content_tag(:div, :class => 'vote') do
-      inner_html = ""
-      inner_html << (@vote ?  render_vote_cancel : render_vote_form)
-      inner_html << vote_score
-    end
+  def vote_fields
+    html = []
+    html << hidden_field_tag('voteable_id', @voteable.id, :id => nil)
+    html << hidden_field_tag('voteable_type', @voteable.class, :id => nil)
+    html << vote_up_tag
+    html << vote_down_tag
+    html.join("\n")
   end
 
   def vote_score
-    content_tag(:strong, Vote.votes_score_for(@voteable), :class => 'score')
+    Vote.votes_score_for(@voteable)
   end
 
-  private
-
-  def render_vote_form
-    render :partial => 'votes/form', :locals => { :voteable => @voteable }
+  def current_user_vote
+    current_user && current_user.vote_for(@voteable)
   end
 
-  def render_vote_cancel
-    link_to(vote_image(:up) + vote_image(:down), @vote,
-      :method => :delete, :title => "Cancel #{vote_direction} vote")
+  def current_user_voted?
+    current_user_vote != nil
   end
 
-  def vote_image(dir)
-    image_tag (vote_direction == dir) ? "voted-#{dir}.png" : "vote-#{dir}.png"
+  def vote_form_url
+    current_user_voted? ? "/votes/#{current_user_vote.id}" : "/votes"
   end
 
-  def vote_direction
-    case @vote.value
-      when 1: :up
-      when -1: :down
-      else raise "invalid vote value: #{vote.value.inspect}"
+  def vote_form_method
+    current_user_voted? ? :delete : :post
+  end
+
+  def vote_up_tag
+    if current_user_voted? && current_user_vote.value == -1
+      submit_tag "Up", :disabled => true, :id => nil
+    elsif current_user_voted? && current_user_vote.value == 1
+      submit_tag "Up", :id => nil, :class => 'voted'
+    else
+      submit_tag "Up", :id => nil
+    end
+  end
+
+  def vote_down_tag
+    if current_user_voted? && current_user_vote.value == 1
+      submit_tag "Down", :disabled => true, :id => nil
+    elsif current_user_voted? && current_user_vote.value == -1
+      submit_tag "Down", :id => nil, :class => 'voted'
+    else
+      submit_tag "Down", :id => nil
     end
   end
 end

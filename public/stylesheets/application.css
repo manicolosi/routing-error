@@ -30,14 +30,14 @@ input[type="text"], input[type="password"], textarea {
   margin: 0 1em 0 0;
   width: 4em;
 }
-.vote .new_vote {
-  float: left;
-}
-.vote .score {
+.vote strong {
   font-size: 200%;
   font-weight: bold;
   color: #444;
   line-height: 1.25em;
+}
+.vote .vote_form {
+  float: left;
 }
 .vote input[type="submit"] {
   margin: 0.15em 0.5em 0.15em 0;
@@ -48,15 +48,24 @@ input[type="text"], input[type="password"], textarea {
   text-indent: -999em;
   cursor: pointer;
 }
-.vote input[type="submit"][value="Up"] {
+.vote input[type="submit"][disabled]:hover {
+  cursor: auto;
+}
+.vote input[type="submit"][value="Up"],
+.vote input[type="submit"][value="Up"][disabled]:hover,
+.vote input[type="submit"][value="Up"].voted:hover {
   background-image: url(/images/vote-up.png);
 }
+.vote input[type="submit"][value="Down"],
+.vote input[type="submit"][value="Down"][disabled]:hover,
+.vote input[type="submit"][value="Down"].voted:hover {
+  background-image: url(/images/vote-down.png);
+}
+.vote input[type="submit"][value="Up"].voted,
 .vote input[type="submit"][value="Up"]:hover {
   background-image: url(/images/voted-up.png);
 }
-.vote input[type="submit"][value="Down"] {
-  background-image: url(/images/vote-down.png);
-}
+.vote input[type="submit"][value="Down"].voted,
 .vote input[type="submit"][value="Down"]:hover {
   background-image: url(/images/voted-down.png);
 }
