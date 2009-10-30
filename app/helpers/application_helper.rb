@@ -19,6 +19,6 @@ module ApplicationHelper
   private
 
   def flash_div(key, mesg)
-    content_tag(:div, mesg, :class => key)
+    content_tag(:div, mesg, :class => ["flash_message", key].join(" "))
   end
 end

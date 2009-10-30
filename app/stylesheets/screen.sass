@@ -1,40 +1,111 @@
-// This import applies a global reset to any page that imports this stylesheet.
-@import blueprint/reset.sass
-// To configure blueprint, edit the partials/base.sass file.
 @import partials/base.sass
-// Import all the default blueprint modules so that we can access their mixins.
-@import blueprint
-// Import the non-default scaffolding module.
-@import blueprint/modules/scaffolding.sass
+@import compass/utilities.sass
 
-// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-// +blueprint
+body
+  color= !text_color
 
-//Recommended Blueprint configuration with scoping and semantic layout:
-+blueprint-typography("body.bp")
-+blueprint-scaffolding("body.bp")
-body.bp
-  +blueprint-utilities
-  +blueprint-debug
-  +blueprint-interaction
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
-form.bp
-  +blueprint-form
+a
+  text-decoration: none
+  color= !link_color
+  &:hover
+    color= !link_color + #333
+    text-decoration: underline
 
-// Page layout can be done using mixins applied to your semantic classes and IDs:
-body.three-col
-  #container
-    +container
-  #header, #footer
-    +column(!blueprint_grid_columns)
-  #sidebar
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    !sidebar_columns = floor(!blueprint_grid_columns / 3)
-    +column(!sidebar_columns)
-  #content
-    // Two thirds of the grid columns, rounding up.
-    // With 24 cols, this is 16.
-    !content_columns = ceil(2 * !blueprint_grid_columns / 3)
-    // true means it's the last column in the row
-    +column(!content_columns, true)
+form
+  fieldset
+    border: none
+    margin: 0
+    padding: 0 0 1em 0
+    label
+      display: block
+
+#flash_messages
+  .flash_message
+    padding: 0.5em
+    margin: 0.25em 0
+    border-width: 2px
+    border-style: solid
+  .error
+    color: #8A1F11
+    background: #FBE3E4
+    border-color: #FBC2C4
+  .notice
+    color: #514721
+    background: #FFF6BF
+    border-color: #FFD324
+  .success
+    color: #264409
+    background: #E6EFC2
+    border-color: #C6D880
+
+#header
+  h1
+    a
+      text-decoration: none
+      color= !text_color - #111
+      &:hover
+        color= !text_color
+
+ul#site-actions
+  +horizontal-list(0.5em)
+  +border-radius(0.5em)
+  float: right
+  font-size: 90%
+  background-color: #CCC
+  padding: 0.5em
+
+ul#questions-index,
+ul#answers-index
+  padding: 0
+  +no-bullets
+
+.controls
+  float: left
+  margin: 0 1em 0 0
+  width: 6em
+  .vote_form
+    overflow: auto
+    strong
+      font-size: 200%
+      font-weight: bold
+      line-height: 1.25em
+      color: #444
+    fieldset
+      float: left
+    input[type="submit"]
+      width: 16px
+      height: 16px
+      &[value="Up"]
+        &:hover, &.voted
+          background-image: url(/images/voted-up.png)
+        &, &.voted:hover, &[disabled]
+          background-image: url(/images/vote-up.png)
+      &[value="Down"]
+        &:hover, &.voted
+          background-image: url(/images/voted-down.png)
+        &, &.voted:hover, &[disabled]
+          background-image: url(/images/vote-down.png)
+  input[type="submit"]
+    display: block
+    margin: 0.15em 0.5em 0.15em 0
+    background: none
+    background-repeat: no-repeat
+    border: none
+    cursor: pointer
+    text-indent: 1.5em
+    text-align: left
+    width: 100%
+    height: 20px
+    color= #333
+    &:hover
+      color= #333 * 2
+      &[disabled]
+        cursor: auto
+    &[value="Edit"]
+      background-image: url(/images/edit.png)
+      &:hover
+        background-image: url(/images/edit-hover.png)
+    &[value="Accept"], &[value="Unaccept"]:hover
+      background-image: url(/images/accept.png)
+    &[value="Unaccept"], &[value="Accept"]:hover
+      background-image: url(/images/accept-hover.png)

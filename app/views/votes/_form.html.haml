@@ -1,5 +1,5 @@
 -#strong= voteable.score
 - form_tag vote_form_url(voteable), :method => vote_form_method, :class => 'vote_form' do
-  %div
+  %fieldset
     = vote_fields
   %strong= Vote.votes_score_for(voteable)

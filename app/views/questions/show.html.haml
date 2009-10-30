@@ -7,8 +7,6 @@
 
 %p=h @question.body
 
-.clear
-
 %p.meta
   Asked by
   = author_link @question
@@ -19,5 +17,5 @@
 
 = link_to "Answer this question!", new_question_answer_path(@question)
 
-%ul.answers
+%ul#answers-index
   = render :partial => '/answers/answer', :collection => @question.answers
