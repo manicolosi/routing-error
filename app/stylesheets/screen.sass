@@ -2,6 +2,7 @@
 @import compass/utilities.sass
 
 body
+  margin: 0
   color= !text_color
 
 a
@@ -39,20 +40,39 @@ form
     border-color: #C6D880
 
 #header
+  padding: 1em 2em
+  margin-bottom: 1em
+  background-color= !header_bg_color
+  color= !header_fg_color
+  border-bottom: 0.25em solid #666
   h1
-    a
-      text-decoration: none
-      color= !text_color - #111
+    margin: 0
+  a
+    text-decoration: none
+    color: inherit
+    &:hover
+      color= !header_fg_color + #111
+  ul#site-actions
+    +horizontal-list(0)
+    +border-radius(0.5em)
+    float: right
+    font-size: 90%
+    background-color: #ddd
+    li a
+      display: block
+      padding: 0.5em
+      color: #333
       &:hover
-        color= !text_color
+        background-color: #333
+        color: #ccc
+    li.first a:hover
+      +border-radius-left(0.4em)
+    li.last a:hover
+      +border-radius-right(0.4em)
 
-ul#site-actions
-  +horizontal-list(0.5em)
-  +border-radius(0.5em)
-  float: right
-  font-size: 90%
-  background-color: #CCC
-  padding: 0.5em
+#flash_messages,
+#content
+  margin: 0 2em
 
 ul#questions-index,
 ul#answers-index
