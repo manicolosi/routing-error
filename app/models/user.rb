@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :answers, :foreign_key => 'author_id'
   has_many :votes, :foreign_key => 'voter_id'
 
+  has_many :friendships
+  has_many :friends, :through => :friendships
+
   acts_as_authentic
 
   def vote_for(voteable)

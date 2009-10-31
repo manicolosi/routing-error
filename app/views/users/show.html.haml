@@ -1,9 +1,16 @@
 %h2= @user.username
 
+= render_follow_buttons(@user)
+
 %ul
   %li= "Member for #{time_ago_in_words(@user.created_at)}"
   %li= "Casted #{@user.vote_ups} up votes and #{@user.vote_downs} down votes"
   %li= "#{@user.reputation} reputation points earned"
+
+%h3= "Following #{pluralize(@user.friends.count, 'person')}"
+%ul
+  - @user.friends.each do |friend|
+    %li= link_to friend.username, friend
 
 %h3 Recent activity
 = render_recent_activities(@user)
