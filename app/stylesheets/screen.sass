@@ -4,6 +4,10 @@
 body
   margin: 0
   color= !text_color
+  font-family: sans-serif
+
+h1, h2, h3, h4, h5, h6
+  font-family: serif
 
 a
   text-decoration: none
@@ -42,16 +46,15 @@ form
 #header
   padding: 1em 2em
   margin-bottom: 1em
-  background-color= !header_bg_color
-  color= !header_fg_color
-  border-bottom: 0.25em solid #666
+  background-color= !header_bg
+  color= !header_fg
+  border-bottom= 1px solid !header_border
   h1
     margin: 0
+    font-family: sans-serif
   a
     text-decoration: none
     color: inherit
-    &:hover
-      color= !header_fg_color + #111
   ul#site-actions
     +horizontal-list(0)
     +border-radius(0.5em)
@@ -63,8 +66,8 @@ form
       padding: 0.5em
       color: #333
       &:hover
-        background-color: #333
-        color: #ccc
+        background-color: #666
+        color: #eee
     li.first a:hover
       +border-radius-left(0.4em)
     li.last a:hover
