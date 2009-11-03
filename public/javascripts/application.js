@@ -5,5 +5,5 @@ jQuery.ajaxSetup({
 });
 
 $(document).ready(function() {
-  $('.vote_form').ajaxForm({ dataType: 'script'});
+  $(".vote_form").ajaxForm({ dataType: "script" });
 });

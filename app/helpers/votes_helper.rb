@@ -1,4 +1,8 @@
 module VotesHelper
+  def render_votes_form(voteable)
+    render :partial => 'votes/form', :locals => { :voteable => voteable }
+  end
+
   # HACK: The rest of these methods depend on this method being called
   # first.
   def vote_form_url(voteable)

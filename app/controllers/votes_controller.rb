@@ -17,16 +17,17 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to voteable }
-      format.js
+      format.js   { render 'update_form' }
     end
   end
 
   def destroy
-    vote = current_user.votes.find(params[:id])
-    voteable = vote.voteable
+    @vote = current_user.votes.find(params[:id])
+    @vote.destroy
 
-    vote.destroy
-
-    redirect_to voteable
+    respond_to do |format|
+      format.html { redirect_to @vote.voteable }
+      format.js   { render 'update_form' }
+    end
   end
 end

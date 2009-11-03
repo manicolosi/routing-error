@@ -2,7 +2,7 @@
 
 %div{:id => html_id(@question)}
   .controls
-    = render :partial => 'votes/form', :locals => { :voteable => @question }
+    = render_votes_form @question
     - if current_user == @question.author
       = button_to "Edit", edit_question_path, :method => :get
   .body

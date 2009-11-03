@@ -1,6 +1,6 @@
 %li.answer{:id => html_id(answer), :class => answer.accepted? ? "accepted" : "not_accepted"}
   .controls
-    = render :partial => 'votes/form', :locals => { :voteable => answer }
+    = render_votes_form answer
     = render :partial => 'questions/answer_accept', :locals => { :answer => answer }
     - if current_user == answer.author
       = button_to "Edit", edit_answer_path(answer), :method => :get
