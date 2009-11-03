@@ -1,17 +1,17 @@
 %h2=h @question.title
 
-.controls
-  = render :partial => 'votes/form', :locals => { :voteable => @question }
-  - if current_user == @question.author
-    = button_to "Edit", edit_question_path, :method => :get
-
-%p=h @question.body
-
-%p.meta
-  Asked by
-  = author_link @question
-  = time_ago_in_words @question.created_at
-  ago
+%div{:id => html_id(@question)}
+  .controls
+    = render :partial => 'votes/form', :locals => { :voteable => @question }
+    - if current_user == @question.author
+      = button_to "Edit", edit_question_path, :method => :get
+  .body
+    %p=h @question.body
+  %p.meta
+    Asked by
+    = author_link @question
+    = time_ago_in_words @question.created_at
+    ago
 
 %h3= pluralize(@question.answers.count, 'answer')
 

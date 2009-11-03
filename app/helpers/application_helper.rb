@@ -4,6 +4,10 @@ module ApplicationHelper
     link_to item.author.username, item.author
   end
 
+  def html_id(object)
+    "#{object.class.to_s.downcase}-#{object.id}"
+  end
+
   def flash_messages
     content_tag(:div, :id => 'flash_messages') do
       flash.collect do |key,mesg|

@@ -1,4 +1,4 @@
-%li.answer{:id => "answer-#{answer.id}", :class => answer.accepted? ? "accepted" : "not_accepted"}
+%li.answer{:id => html_id(answer), :class => answer.accepted? ? "accepted" : "not_accepted"}
   .controls
     = render :partial => 'votes/form', :locals => { :voteable => answer }
     = render :partial => 'questions/answer_accept', :locals => { :answer => answer }
@@ -6,7 +6,6 @@
       = button_to "Edit", edit_answer_path(answer), :method => :get
   .body
     %p=h answer.body
-
   %p.meta
     Answered by
     = author_link answer

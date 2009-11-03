@@ -6,17 +6,19 @@ class VotesController < ApplicationController
     voteable_type = params[:voteable_type]
     voteable = voteable_type.constantize.find(voteable_id)
     direction = params[:commit].downcase.to_sym
-    vote = Vote.vote(current_user, voteable, direction)
-    @vote = vote
+    @vote = Vote.vote(current_user, voteable, direction)
 
-    unless vote.valid?
+    unless @vote.valid?
       flash[:error] = []
-      vote.errors.each do |attr, mesg|
-        flash[:error] << "#{mesg}"
+      @vote.errors.each do |attr, mesg|
+        flash[:error] << mesg
       end
     end
 
-    redirect_to voteable
+    respond_to do |format|
+      format.html { redirect_to voteable }
+      format.js
+    end
   end
 
   def destroy
