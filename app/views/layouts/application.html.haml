@@ -7,7 +7,8 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    = javascript_include_tag 'jquery', 'jquery.form', 'application'
+    = javascript_include_tag 'jquery', 'jquery.form', 'jquery-ui.effects'
+    = javascript_include_tag 'application'
   %body
     .container{:class => (yield :page_type) || "default"}
       #header

@@ -2,3 +2,4 @@ var voteable = $("#<%= html_id @vote.voteable %>");
 var vote_form_html =
   "<%= escape_javascript(render_votes_form(@vote.voteable)) %>";
 $(".vote_form", voteable).replaceWith(vote_form_html);
+$(".vote_form strong", voteable).effect("highlight", null, "slow");
