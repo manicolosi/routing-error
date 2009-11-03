@@ -2,6 +2,10 @@ example:
   username: example_user
   email: example_user@example.com
 
+example2:
+  username: example_user2
+  email: example_user2@example.com
+
 question_author:
   username: joe_blow
   email: joe_blow@example.com
