@@ -7,6 +7,8 @@
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Modified to use live events in ajaxForm() method.
  */
 ;(function($) {
 
@@ -373,10 +375,10 @@ $.fn.ajaxSubmit = function(options) {
  * the form itself.
  */
 $.fn.ajaxForm = function(options) {
-	return this.ajaxFormUnbind().bind('submit.form-plugin', function() {
+	return this.ajaxFormUnbind().live('submit.form-plugin', function() {
 		$(this).ajaxSubmit(options);
 		return false;
-	}).bind('click.form-plugin', function(e) {
+	}).live('click.form-plugin', function(e) {
 		var $el = $(e.target);
 		if (!($el.is(":submit,input:image"))) {
 			return;
