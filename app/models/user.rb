@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
 
   acts_as_authentic
+  is_gravtastic!
 
   def vote_for(voteable)
     conditions = "voteable_id = '#{voteable.id}' AND " +

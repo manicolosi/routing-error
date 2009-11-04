@@ -8,9 +8,11 @@
   %li= "#{@user.reputation} reputation points earned"
 
 %h3= "Following #{pluralize(@user.friends.count, 'person')}"
-%ul
+%ul.followers
   - @user.friends.each do |friend|
-    %li= link_to friend.username, friend
+    %li
+      - link_to friend do
+        %img{:src => friend.gravatar_url(:size => 32)}
 
 %h3 Recent activity
 = render_recent_activities(@user)

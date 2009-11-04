@@ -9,14 +9,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'compass', :lib => 'compass'
   config.gem 'haml', :lib => 'haml', :version => '>=2.2.0'
-  # Settings in config/environments/* take precedence over those specified here.
-  # Application configuration should go into files in config/initializers
-  # -- all .rb files in that directory are automatically loaded.
-
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
   config.gem "authlogic"
+  config.gem "gravtastic"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
