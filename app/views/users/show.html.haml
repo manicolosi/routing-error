@@ -9,10 +9,7 @@
 
 %h3= "Following #{pluralize(@user.friends.count, 'person')}"
 %ul.followers
-  - @user.friends.each do |friend|
-    %li
-      - link_to friend do
-        %img{:src => friend.gravatar_url(:size => 32)}
+  = render :partial => 'follower', :collection => @user.friends
 
 %h3 Recent activity
 = render_recent_activities(@user)
