@@ -1,6 +1,15 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test "a username cannot contain periods" do
+    user = users(:example)
+    user.username = "joe.user"
+
+    assert user.invalid?
+    assert_equal "should use only letters, numbers, spaces, and -_@ please.",
+      user.errors[:username]
+  end
+
   test "a new user has zero reputation ponts" do
     user = users(:example)
     assert_equal 0, user.reputation

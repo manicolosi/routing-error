@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
 
-  acts_as_authentic
+  acts_as_authentic do |c|
+    c.merge_validates_format_of_login_field_options :with => /\A\w[\w+\-_@ ]+\z/,
+      :message => "should use only letters, numbers, spaces, and -_@ please."
+  end
+
   is_gravtastic!
 
   def vote_for(voteable)
