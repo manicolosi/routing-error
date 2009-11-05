@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
       :message => "should use only letters, numbers, spaces, and -_@ please."
   end
 
+  def to_param
+    username
+  end
+
   is_gravtastic!
 
   def vote_for(voteable)
