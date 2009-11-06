@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
 
   acts_as_authentic do |c|
-    c.merge_validates_format_of_login_field_options :with => /\A\w[\w+\-_@ ]+\z/,
-      :message => "should use only letters, numbers, spaces, and -_@ please."
+    c.merge_validates_format_of_login_field_options \
+      :with => /\A[a-zA-Z\d][a-zA-Z\d\-]*\z/,
+      :message => "may only contain letters, numbers, and hyphens (-)."
   end
 
   def to_param

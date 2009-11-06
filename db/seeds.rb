@@ -7,7 +7,7 @@ end
 
 20.times do
   user = User.new
-  user.username = Faker::Internet.user_name.tr('.', '-')
+  user.username = Faker::Internet.user_name.tr('._', '-')
   user.email = Faker::Internet.email
   user.password = 'none'
   user.password_confirmation = 'none'
